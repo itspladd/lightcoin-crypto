@@ -7,7 +7,9 @@ class Account {
   }
 
   get balance() {
-    return Number(this._balance.toFixed(2));
+    return Number(this.transactions
+      .reduce( (sum, next) => sum + next.value, 0)
+      .toFixed(2));
   }
 
   set balance(amt) {
@@ -31,7 +33,6 @@ class Transaction {
   }
 
   commit() {
-    this.account.balance += this.value;
     this.account.addTransaction(this);
   }
 
@@ -64,15 +65,15 @@ class Deposit extends Transaction {
 
 const myAccount = new Account("itspladd");
 
-const t1 = new Withdrawal(50.25, myAccount);
+const t1 = new Withdrawal(50, myAccount);
 t1.commit();
 console.log('Transaction 1:', t1);
 
-const t2 = new Withdrawal(9.99, myAccount);
+const t2 = new Withdrawal(20, myAccount);
 t2.commit();
 console.log('Transaction 2:', t2);
 
-const t3 = new Deposit(100.10, myAccount);
+const t3 = new Deposit(100, myAccount);
 t3.commit();
 console.log('Transaction 3:', t3);
 
