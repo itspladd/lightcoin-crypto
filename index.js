@@ -3,6 +3,7 @@ class Account {
   constructor(username) {
     this.username = username;
     this._balance = 0;
+    this.transactions = [];
   }
 
   get balance() {
@@ -11,6 +12,10 @@ class Account {
 
   set balance(amt) {
     this._balance = amt;
+  }
+
+  addTransaction(transaction) {
+    this.transactions.push(transaction);
   }
 }
 
@@ -23,6 +28,7 @@ class Transaction {
 
   commit() {
     this.account.balance += this.value;
+    this.account.addTransaction(this);
   }
 
   set value(val) {
@@ -67,3 +73,4 @@ t3.commit();
 console.log('Transaction 3:', t3);
 
 console.log('Balance:', myAccount.balance);
+console.log('Transaction history:', myAccount.transactions);
