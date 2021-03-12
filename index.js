@@ -17,6 +17,10 @@ class Account {
   addTransaction(transaction) {
     this.transactions.push(transaction);
   }
+
+  logTransactions() {
+    this.transactions.forEach( trans => console.log(`${trans.constructor.name}: $${trans.value}`));
+  }
 }
 
 class Transaction {
@@ -73,4 +77,5 @@ t3.commit();
 console.log('Transaction 3:', t3);
 
 console.log('Balance:', myAccount.balance);
-console.log('Transaction history:', myAccount.transactions);
+console.log('Transaction history:');
+myAccount.logTransactions();
