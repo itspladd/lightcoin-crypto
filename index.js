@@ -9,25 +9,27 @@ class Account {
 
 class Withdrawal {
 
-  constructor(amount) {
+  constructor(amount, account) {
     this.amount = amount;
+    this.account = account;
   }
 
-/*   commit() {
-    balance -= this.amount;
-  } */
+  commit() {
+    this.account.balance -= this.amount;
+  }
 
 }
 
 class Deposit {
 
-  constructor(amount) {
+  constructor(amount, account) {
     this.amount = amount;
+    this.account = account;
   }
 
-/*   commit() {
-    balance += this.amount;
-  } */
+  commit() {
+    this.account.balance += this.amount;
+  }
 
 }
 
@@ -38,16 +40,16 @@ class Deposit {
 
 const myAccount = new Account("itspladd");
 
-/* const t1 = new Withdrawal(50.25);
+const t1 = new Withdrawal(50.25, myAccount);
 t1.commit();
 console.log('Transaction 1:', t1);
 
-const t2 = new Withdrawal(9.99);
+const t2 = new Withdrawal(9.99, myAccount);
 t2.commit();
 console.log('Transaction 2:', t2);
 
-const t3 = new Deposit(100.10);
+const t3 = new Deposit(100.10, myAccount);
 t3.commit();
-console.log('Transaction 3:', t3); */
+console.log('Transaction 3:', t3);
 
 console.log('Balance:', myAccount.balance);
