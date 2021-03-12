@@ -8,7 +8,7 @@ class Account {
 
   get balance() {
     return Number(this.transactions
-      .reduce( (sum, next) => sum + next.value, 0)
+      .reduce((sum, next) => sum + next.value, 0)
       .toFixed(2));
   }
 
@@ -21,7 +21,7 @@ class Account {
   }
 
   logTransactions() {
-    this.transactions.forEach( trans => console.log(`**${trans.constructor.name}: $${trans.value}`));
+    this.transactions.forEach(trans => console.log(`**${trans.constructor.name}: $${trans.value}`));
   }
 }
 
@@ -36,7 +36,7 @@ class Transaction {
     if (this.isAllowed()) {
       this.account.addTransaction(this);
     } else {
-      console.log("Transaction not allowed. Not enough money in account.")
+      console.log("Transaction not allowed. Not enough money in account.");
       console.log("Balance: ", this.account.balance);
       console.log("Requested transaction: ", this.constructor.name, this.value);
     }
@@ -95,9 +95,9 @@ const t4 = new Withdrawal(200, myAccount);
 t4.commit();
 //console.log('Transaction 4:', t4);
 
-console.log(`************************************`)
-console.log(`*****All transactions completed*****`)
-console.log(`************************************`)
+console.log(`************************************`);
+console.log(`*****All transactions completed*****`);
+console.log(`************************************`);
 
 console.log('Final balance:', myAccount.balance);
 console.log('Transaction history:');
