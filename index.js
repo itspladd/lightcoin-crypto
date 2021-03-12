@@ -2,36 +2,50 @@ class Account {
 
   constructor(username) {
     this.username = username;
-    this.balance = 0;
+    this._balance = 0;
   }
 
+  get balance() {
+    return Number(this._balance.toFixed(2));
+  }
+
+  set balance(amt) {
+    this._balance = amt;
+  }
 }
 
-class Withdrawal {
+class Transaction {
 
   constructor(amount, account) {
-    this.amount = amount;
+    this._value = amount;
     this.account = account;
   }
 
   commit() {
-    this.account.balance -= this.amount;
+    this.account.balance += this.value;
+  }
+
+  set value(val) {
+    this._value = val;
   }
 
 }
 
-class Deposit {
+class Withdrawal extends Transaction  {
 
-  constructor(amount, account) {
-    this.amount = amount;
-    this.account = account;
+  get value() {
+    return -this._value;
   }
-
-  commit() {
-    this.account.balance += this.amount;
-  }
-
 }
+
+class Deposit extends Transaction {
+
+
+  get value() {
+    return this._value;
+  }
+}
+
 
 
 
