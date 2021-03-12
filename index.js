@@ -1,4 +1,11 @@
-let balance = 500.00;
+class Account {
+
+  constructor(username) {
+    this.username = username;
+    this.balance = 0;
+  }
+
+}
 
 class Withdrawal {
 
@@ -6,9 +13,9 @@ class Withdrawal {
     this.amount = amount;
   }
 
-  commit() {
+/*   commit() {
     balance -= this.amount;
-  }
+  } */
 
 }
 
@@ -18,9 +25,9 @@ class Deposit {
     this.amount = amount;
   }
 
-  commit() {
+/*   commit() {
     balance += this.amount;
-  }
+  } */
 
 }
 
@@ -29,7 +36,9 @@ class Deposit {
 // DRIVER CODE BELOW
 // We use the code below to "drive" the application logic above and make sure it's working as expected
 
-const t1 = new Withdrawal(50.25);
+const myAccount = new Account("itspladd");
+
+/* const t1 = new Withdrawal(50.25);
 t1.commit();
 console.log('Transaction 1:', t1);
 
@@ -39,6 +48,6 @@ console.log('Transaction 2:', t2);
 
 const t3 = new Deposit(100.10);
 t3.commit();
-console.log('Transaction 3:', t3);
+console.log('Transaction 3:', t3); */
 
-console.log('Balance:', balance);
+console.log('Balance:', myAccount.balance);
